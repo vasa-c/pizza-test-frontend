@@ -13,13 +13,14 @@ export const mutations = {
 
 export const actions = {
 
-    nuxtServerInit({state, dispatch}, context) {
+    nuxtServerInit({state, commit, dispatch}, context) {
         if (context.req) {
             state.cookieOnServer = context.req.headers.cookie || null;
         }
 
         return dispatch("page", "layout").then((data) => {
             state.csrf = data.csrf;
+            commit("pizza/types", data.pizza_types);
         });
     },
 
