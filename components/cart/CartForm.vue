@@ -92,11 +92,10 @@
                     const data = response.data;
                     this.wait = false;
                     if (data.order_number) {
-                        this.onCheckout(data.order_number);
+                        this.onCheckout(data.order_number, data.user);
                         return;
                     }
                 }).catch((error) => {
-                    console.log(error);
                     this.wait = false;
                 });
             },
@@ -134,7 +133,10 @@
                 }
                 return true;
             },
-            onCheckout(number) {
+            onCheckout(number, user) {
+                if (user) {
+                    this.$store.commit("user/user", user);
+                }
                 this.$router.push(`/cabinet/${number}`);
                 this.$store.dispatch("cart/clear");
             },
