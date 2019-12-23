@@ -2,15 +2,18 @@
     <div>
         <layout-header></layout-header>
         <nuxt />
+        <layout-footer></layout-footer>
     </div>
 </template>
 
 <script>
     import LayoutHeader from "~/components/layout/LayoutHeader";
+    import LayoutFooter from "~/components/layout/LayoutFooter";
 
     export default {
         components: {
             LayoutHeader,
+            LayoutFooter,
         },
     }
 </script>
