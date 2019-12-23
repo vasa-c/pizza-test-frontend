@@ -21,7 +21,7 @@
                 </template>
 
                 <template v-if="!user">
-                    <img src="~/assets/icons/login.svg" style="width:20px;cursor:pointer" alt="Login" titlie="Login" />
+                    <img src="~/assets/icons/login.svg" style="width:20px;cursor:pointer" alt="Login" titlie="Login" @click="signin" />
                 </template>
             </div>
             <br style="clear:both" />
@@ -47,6 +47,9 @@
         methods: {
             logout() {
                 this.$store.dispatch("user/logout");
+            },
+            signin() {
+                this.$store.dispatch("user/signin");
             },
         },
     }

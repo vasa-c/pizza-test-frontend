@@ -1,5 +1,6 @@
 export const state = () => ({
     user: null,
+    loginPopup: false,
 });
 
 export const getters = {
@@ -13,6 +14,10 @@ export const getters = {
 
     ifAdmin(state) {
         return !!(user && user.is_admin);
+    },
+
+    loginPopup(state) {
+        return state.loginPopup;
     },
 };
 
@@ -33,6 +38,14 @@ export const actions = {
         }, {root: true}).then((response) => {
             commit("user", null);
         });
+    },
+
+    signin({state}) {
+        state.loginPopup = true;
+    },
+
+    closeLoginPopup({state}) {
+        state.loginPopup = false;
     },
 
 };
