@@ -1,12 +1,12 @@
 <template>
     <div>
         <layout-header></layout-header>
-        <section id="center">
-            <div class="wrapper">
-                <left-menu></left-menu>
-                <nuxt />
-            </div>
-        </section>
+        <div class="wrapper">
+            <section id="center">
+            <left-menu></left-menu>
+            <nuxt />
+            </section>
+        </div>
         <layout-footer></layout-footer>
     </div>
 </template>
@@ -35,6 +35,10 @@
     .wrapper {
         max-width: 1280px;
         margin: auto;
+        padding: 0 25px;
+    }
+    #center {
+        width: 1280px;
     }
     main {
         float: left;
