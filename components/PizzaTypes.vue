@@ -1,6 +1,6 @@
 <template>
     <div class="pizza-list">
-        <nuxt-link v-for="pizza in types" :to="`/pizza/${pizza.slug}`">
+        <nuxt-link v-for="pizza in types" :to="`/pizza/${pizza.slug}`" :key="pizza.slug">
             <div class="pizza-item">
                 <div class="pizza-name">{{ pizza.name }}</div>
                 <div class="pizza-photo"><img :src="pizza.photo" :alt="pizza.name"></div>

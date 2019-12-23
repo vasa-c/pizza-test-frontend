@@ -38,7 +38,8 @@
     }
     main {
         float: left;
-        max-width: 1000px;
+        max-width: 950px;
+        padding-left: 50px;
     }
     h1 {
         font-size: 24px;
