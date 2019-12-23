@@ -1,11 +1,16 @@
 <template>
     <nav id="left-menu">
-        Left menu
+        <menu-pizza-list></menu-pizza-list>
     </nav>
 </template>
 
 <script>
+    import MenuPizzaList from "./MenuPizzaList";
+
     export default {
+        components: {
+            MenuPizzaList,
+        },
     }
 </script>
 
