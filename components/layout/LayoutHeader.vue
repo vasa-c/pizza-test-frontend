@@ -16,8 +16,14 @@
                 </span>
 
                 <template v-if="user">
-                    <span class="user-block-name"><nuxt-link to="/cabinet">{{ user.name }}</nuxt-link></span>
+                    <span class="user-block-name" style="padding-right:15px"><nuxt-link to="/cabinet">{{ user.name }}</nuxt-link></span>
                     <img src="~/assets/icons/logout.svg" style="width:20px;cursor:pointer" alt="Logout" title="logout" @click="logout" />
+
+                    <span v-if="user.is_admin" style="padding-left:15px">
+                        <nuxt-link to="/admn">
+                            <img src="~/assets/icons/tools.svg" style="width:20px;cursor:pointer" title="Admin area" alt="" />
+                        </nuxt-link>
+                    </span>
                 </template>
 
                 <template v-if="!user">
