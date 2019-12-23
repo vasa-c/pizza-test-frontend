@@ -22,6 +22,7 @@ export const actions = {
         return dispatch("page", "layout").then((data) => {
             state.csrf = data.csrf;
             commit("pizza/types", data.pizza_types);
+            commit("user/user", data.user);
             dispatch("price/init", {
                 currencies: data.currencies,
             });

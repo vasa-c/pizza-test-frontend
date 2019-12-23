@@ -8,10 +8,21 @@
             </nuxt-link>
             <div id="user-block">
                 <currencies></currencies>
-                <nuxt-link to="/cart">
-                    <img src="~/assets/icons/shopping.svg" alt="Shopping cart" class="cart-icon" />
-                    <span class="cart-count" v-if="cartCount">{{ cartCount }}</span>
-                </nuxt-link>
+                <span class="user-block-cart">
+                    <nuxt-link to="/cart">
+                        <img src="~/assets/icons/shopping.svg" alt="Shopping cart" class="cart-icon" />
+                        <span class="cart-count" v-if="cartCount">{{ cartCount }}</span>
+                    </nuxt-link>
+                </span>
+
+                <template v-if="user">
+                    <span class="user-block-name"><nuxt-link to="/cabinet">{{ user.name }}</nuxt-link></span>
+                    <img src="~/assets/icons/logout.svg" style="width:20px;cursor:pointer" alt="Logout" title="logout" @click="logout" />
+                </template>
+
+                <template v-if="!user">
+                    <img src="~/assets/icons/login.svg" style="width:20px;cursor:pointer" alt="Login" titlie="Login" />
+                </template>
             </div>
             <br style="clear:both" />
         </div>
@@ -28,6 +39,14 @@
         computed: {
             cartCount() {
                 return this.$store.getters["cart/count"];
+            },
+            user() {
+                return this.$store.getters["user/user"];
+            },
+        },
+        methods: {
+            logout() {
+                this.$store.dispatch("user/logout");
             },
         },
     }
@@ -65,5 +84,16 @@
         height: 15px;
         margin-left: -10px;
         text-align: center;
+    }
+    .user-block-cart {
+        padding-right: 50px;
+    }
+    .user-block-name {
+        display:inline-block;
+        max-width:150px;
+        overflow:hidden;
+        a {
+            color: white;
+        }
     }
 </style>
