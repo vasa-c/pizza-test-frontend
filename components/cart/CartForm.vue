@@ -16,7 +16,8 @@
             <p v-if="!deliveryPrice">Delivery if free</p>
             <p>Total price: <b>{{ price(pizzaPrice + deliveryPrice) }}</b></p>
 
-            <button type="submit" class="buy-button">Buy!</button>
+            <button type="submit" class="buy-button" v-if="!wait">Buy</button>
+            <p v-if="wait">Please, wait...</p>
         </form>
     </div>
 </template>
@@ -35,6 +36,7 @@
                     contacts: null,
                     outside: false,
                 },
+                wait: false,
             };
         },
 
@@ -73,6 +75,9 @@
                 this.order.outside = this.$refs.outside.checked;
             },
             submit() {
+                if (this.wait) {
+                    return;
+                }
                 let firstError;
                 for (const key of ["email", "name", "address", "contacts"]) {
                     const
@@ -95,15 +100,20 @@
                 this.order.outside = this.$refs.outside.checked;
                 this.order.pizza = this.$store.getters["cart/cart"];
                 this.order.currency = this.currentCurrency();
+                this.wait = true;
                 this.$store.dispatch("api", {
                     action: "checkout",
                     data: this.order,
                 }).then((response) => {
                     const data = response.data;
+                    this.wait = false;
                     if (data.order_number) {
                         this.onCheckout(data.order_number);
                         return;
                     }
+                }).catch((error) => {
+                    console.log(error);
+                    this.wait = false;
                 });
             },
             onCheckout(number) {
