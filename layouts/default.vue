@@ -31,6 +31,16 @@
                 return this.$store.getters["user/loginPopup"] && (!this.$store.getters["user/user"]);
             },
         },
+        head() {
+            const pageTitle = this.$store.getters.pageTitle;
+            let title = "PizzaTest";
+            if (pageTitle) {
+                title = `${pageTitle} - ${title}`
+            }
+            return {
+                title: title,
+            };
+        },
     }
 </script>
 

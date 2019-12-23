@@ -23,6 +23,9 @@ export default {
     components: {
         PizzaTypes,
     },
+    mounted() {
+        this.setPageTitle("Main Page");
+    },
 }
 </script>
 

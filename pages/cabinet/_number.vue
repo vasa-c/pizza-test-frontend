@@ -37,6 +37,11 @@
                 return this.$store.getters["user/user"];
             },
         },
+        mounted() {
+            if (this.order) {
+                this.setPageTitle(`Order #${this.order.number} details`);
+            }
+        },
     }
 </script>
 
