@@ -22,6 +22,9 @@ export const mutations = {
         }
         state.all = all;
     },
+    setAll(state, all) {
+        state.all = all;
+    },
 };
 
 export const actions = {
@@ -35,13 +38,13 @@ export const actions = {
         return commit("setAsString", str || "");
     },
 
-    set({state}, {name, value}) {
+    set({state, commit}, {name, value}) {
         const all = state.all;
         if (typeof window === "undefined") {
             return;
         }
-        document.cookie = `${name}=${encodeURIComponent(value)};path=/;max-age=31000000`;
+        window.document.cookie = `${name}=${encodeURIComponent(value)};path=/;max-age=31000000`;
         all[name] = value;
-        state.all = all; // @todo
+        commit("setAll", all);
     },
 };
