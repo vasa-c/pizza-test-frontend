@@ -29,6 +29,7 @@
     body {
         margin: 0;
         font-family: "Ubuntu", sans-serif;
+        color: #343a40;
     }
     .wrapper {
         max-width: 1280px;
