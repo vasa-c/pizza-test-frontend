@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <main v-if="user">
         <h1>{{ user.name }}</h1>
 
         <p>{{ user.email }}, {{ user.address }}, {{ user.contacts }}</p>
@@ -28,8 +28,11 @@
 
 <script>
     export default {
-        asyncData({store}) {
-            return store.dispatch("page", "cabinet");
+        asyncData({store, error}) {
+            return store.dispatch("securePage", {
+                page: "cabinet",
+                error: error,
+            });
         },
         computed: {
             user() {

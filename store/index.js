@@ -85,4 +85,16 @@ export const actions = {
         });
     },
 
+    securePage({dispatch}, {page, error}) {
+        return dispatch("page", page).catch((e) => {
+            if (e.response.status === 403) {
+                error({title: "Forbidden", statusCode: 403, message: "Forbidden"});
+            }
+            if (e.response.status === 404) {
+                error({title: "404", statusCode: 404, message: "Page not found"});
+            }
+            error({title: "Error", statusCode: 500, message: "Some error"});
+        });
+    },
+
 };

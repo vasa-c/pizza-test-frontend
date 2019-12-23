@@ -19,8 +19,11 @@
 
 <script>
     export default {
-        asyncData({store}) {
-            return store.dispatch("page", "admin");
+        asyncData({store, error}) {
+            return store.dispatch("securePage", {
+                page: "admin",
+                error: error,
+            });
         },
         computed: {
 

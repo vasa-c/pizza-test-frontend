@@ -25,11 +25,14 @@
 
 <script>
     export default {
-        asyncData({store, route}) {
+        asyncData({store, route, error}) {
             const
                 number = route.params.number,
-                action = `cabinet/${number}`;
-            return store.dispatch("page", action);
+                page = `cabinet/${number}`;
+            return store.dispatch("securePage", {
+                page,
+                error,
+            });
         },
         computed: {
             user() {

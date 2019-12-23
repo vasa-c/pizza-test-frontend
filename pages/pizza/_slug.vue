@@ -37,11 +37,14 @@
     const MAX_PIZZA = 10;
 
     export default {
-        asyncData({store, route}) {
+        asyncData({store, route, error}) {
             const
                 slug = route.params.slug,
-                action = `pizza/${slug}`;
-            return store.dispatch("page", action);
+                page = `pizza/${slug}`;
+            return store.dispatch("securePage", {
+                page,
+                error,
+            });
         },
         computed: {
             count() {

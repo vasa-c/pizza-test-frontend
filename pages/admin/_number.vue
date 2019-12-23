@@ -66,11 +66,14 @@
                 wait: false,
             };
         },
-        asyncData({store, route}) {
+        asyncData({store, route, error}) {
             const
                 number = route.params.number,
-                action = `admin/${number}`;
-            return store.dispatch("page", action);
+                page = `admin/${number}`;
+            return store.dispatch("securePage", {
+                page,
+                error,
+            });
         },
         computed: {
         },
