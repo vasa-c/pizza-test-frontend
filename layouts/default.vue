@@ -17,6 +17,7 @@
     import LeftMenu from "~/components/layout/LeftMenu";
 
     export default {
+        middleware: ["default"],
         components: {
             LayoutHeader,
             LayoutFooter,
@@ -37,5 +38,13 @@
     }
     main {
         float: left;
+        max-width: 950px;
+        padding-left: 50px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    h2 {
+        font-size: 20px;
     }
 </style>
