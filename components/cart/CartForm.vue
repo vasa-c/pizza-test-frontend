@@ -2,7 +2,8 @@
     <div class="cart-form">
         <h2>Your contact details</h2>
         <form @submit.prevent="submit">
-            <div class="cart-form-field"><input type="text" placeholder="E-mail" value="" ref="email" /></div>
+            <div class="cart-form-field" v-if="!user"><input type="text" placeholder="E-mail" value="" ref="email" /></div>
+            <div class="cart-form-field" v-if="user">{{ user.email }}</div>
             <div class="cart-form-field"><input type="text" placeholder="Name" value="" ref="name" /></div>
             <div class="cart-form-field"><input type="text" placeholder="Address" value="" ref="address" /></div>
             <div class="cart-form-field"><input type="text" placeholder="Contacts" value="" ref="contacts" /></div>
@@ -18,6 +19,8 @@
 
             <button type="submit" class="buy-button" v-if="!wait">Buy</button>
             <p v-if="wait">Please, wait...</p>
+
+            <p v-if="error" style="color:red">Some, error...</p>
         </form>
     </div>
 </template>
@@ -37,11 +40,11 @@
                     outside: false,
                 },
                 wait: false,
+                error: false,
             };
         },
 
         computed: {
-
             pizzaPrice() {
                 const
                     cart = this.$store.getters["cart/cart"],
@@ -58,7 +61,6 @@
                 }
                 return price;
             },
-
             deliveryPrice() {
                 if (!this.order.outside) {
                     return 0;
@@ -67,6 +69,9 @@
                     return 0;
                 }
                 return 100; // @todo convert
+            },
+            user() {
+                return this.$store.getters["user/user"];
             },
         },
 
@@ -78,6 +83,7 @@
                 if (this.wait) {
                     return;
                 }
+                this.error = false;
                 if (!this.loadForm()) {
                     return;
                 }
@@ -95,23 +101,33 @@
                         this.onCheckout(data.order_number, data.user);
                         return;
                     }
+                    if (data.req_login) {
+                        this.$store.dispatch("user/reqLogin", this.order.email);
+                        return;
+                    }
+                    this.error = true;
                 }).catch((error) => {
                     this.wait = false;
+                    this.error = true;
                 });
             },
             loadForm() {
                 let firstError;
-                const
-                    input = this.$refs.email,
-                    value = input.value.replace(/^\s+/, "").replace(/\s$/, "");
-                if ((value === "") || (!/^[^@]+@.+$/.test(value))) {
-                    input.classList.add("error-input");
-                    if (!firstError) {
-                        firstError = input;
+                if (!this.user) {
+                    const
+                        input = this.$refs.email,
+                        value = input.value.replace(/^\s+/, "").replace(/\s$/, "");
+                    if ((value === "") || (!/^[^@]+@.+$/.test(value))) {
+                        input.classList.add("error-input");
+                        if (!firstError) {
+                            firstError = input;
+                        }
+                    } else {
+                        input.classList.remove("error-input");
+                        this.order.email = value;
                     }
                 } else {
-                    input.classList.remove("error-input");
-                    this.order.email = value;
+                    this.order.email = this.user.email;
                 }
                 for (const key of ["name", "address", "contacts"]) {
                     const
@@ -140,6 +156,13 @@
                 this.$router.push(`/cabinet/${number}`);
                 this.$store.dispatch("cart/clear");
             },
+        },
+        mounted() {
+            if (this.user) {
+                this.$refs.name.value = this.user.name || "";
+                this.$refs.address.value = this.user.address || "";
+                this.$refs.contacts.value = this.user.contacts || "";
+            }
         },
     };
 </script>

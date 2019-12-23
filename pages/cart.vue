@@ -26,6 +26,9 @@
                 return (this.$store.getters["cart/count"] === 0);
             },
         },
+        mounted() {
+            this.setPageTitle("Shopping Cart");
+        },
     }
 </script>
 

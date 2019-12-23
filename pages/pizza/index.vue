@@ -13,6 +13,9 @@
         components: {
             PizzaTypes,
         },
+        mounted() {
+            this.setPageTitle("List of Pizza");
+        },
     }
 </script>
 

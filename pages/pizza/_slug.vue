@@ -84,6 +84,7 @@
         mounted() {
             if (this.pizza) {
                 this.$store.commit("pizza/current", this.pizza);
+                this.setPageTitle(this.pizza.name);
             }
         },
     }

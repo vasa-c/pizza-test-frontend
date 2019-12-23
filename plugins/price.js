@@ -21,3 +21,7 @@ Vue.prototype.price = function (price, count, cur) {
     price = Math.floor(price / 100);
     return `${label}${price},${cents}`;
 };
+
+Vue.prototype.setPageTitle = function (title) {
+    this.$store.commit("pageTitle", title);
+};

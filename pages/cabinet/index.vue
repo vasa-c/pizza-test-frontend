@@ -35,7 +35,10 @@
             user() {
                 return this.$store.getters["user/user"];
             },
-        }
+        },
+        mounted() {
+            this.setPageTitle("My Cabinet");
+        },
     }
 </script>
 

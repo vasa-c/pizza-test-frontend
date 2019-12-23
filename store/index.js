@@ -5,9 +5,13 @@ export const strict = false; // fix for https://github.com/nuxt/nuxt.js/issues/1
 export const state = () => ({
     cookieOnServer: null,
     csrf: null,
+    pageTitle: null,
 });
 
 export const getters = {
+    pageTitle(state) {
+        return state.pageTitle;
+    },
 };
 
 export const mutations = {
@@ -16,6 +20,9 @@ export const mutations = {
         state.csrf = csrf;
     },
 
+    pageTitle(state, title) {
+        state.pageTitle = title;
+    },
 };
 
 export const actions = {
