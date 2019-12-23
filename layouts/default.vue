@@ -44,6 +44,7 @@
         float: left;
         max-width: 950px;
         padding-left: 50px;
+        margin-bottom: 50px;
     }
     h1 {
         font-size: 24px;
