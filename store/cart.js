@@ -72,6 +72,11 @@ export const actions = {
         return dispatch("save");
     },
 
+    clear({state, dispatch}) {
+        state.cart = {};
+        dispatch("save");
+    },
+
     save({state, dispatch}) {
         const
             cart = state.cart,

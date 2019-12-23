@@ -101,10 +101,14 @@
                 }).then((response) => {
                     const data = response.data;
                     if (data.order_number) {
-                        this.$router.push(`/cabinet/${data.order_number}`);
+                        this.onCheckout(data.order_number);
                         return;
                     }
                 });
+            },
+            onCheckout(number) {
+                this.$router.push(`/cabinet/${number}`);
+                this.$store.dispatch("cart/clear");
             },
         },
     };
