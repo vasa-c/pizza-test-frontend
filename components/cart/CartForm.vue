@@ -78,23 +78,7 @@
                 if (this.wait) {
                     return;
                 }
-                let firstError;
-                for (const key of ["email", "name", "address", "contacts"]) {
-                    const
-                        input = this.$refs[key],
-                        value = input.value.replace(/^\s+/, "").replace(/\s$/, "");
-                    if (value === "") {
-                        input.classList.add("error-input");
-                        if (!firstError) {
-                            firstError = input;
-                        }
-                        continue;
-                    }
-                    input.classList.remove("error-input");
-                    this.order[key] = value;
-                }
-                if (firstError) {
-                    firstError.focus();
+                if (!this.loadForm()) {
                     return;
                 }
                 this.order.outside = this.$refs.outside.checked;
@@ -115,6 +99,40 @@
                     console.log(error);
                     this.wait = false;
                 });
+            },
+            loadForm() {
+                let firstError;
+                const
+                    input = this.$refs.email,
+                    value = input.value.replace(/^\s+/, "").replace(/\s$/, "");
+                if ((value === "") || (!/^[^@]+@.+$/.test(value))) {
+                    input.classList.add("error-input");
+                    if (!firstError) {
+                        firstError = input;
+                    }
+                } else {
+                    input.classList.remove("error-input");
+                    this.order.email = value;
+                }
+                for (const key of ["name", "address", "contacts"]) {
+                    const
+                        input = this.$refs[key],
+                        value = input.value.replace(/^\s+/, "").replace(/\s$/, "");
+                    if (value === "") {
+                        input.classList.add("error-input");
+                        if (!firstError) {
+                            firstError = input;
+                        }
+                        continue;
+                    }
+                    input.classList.remove("error-input");
+                    this.order[key] = value;
+                }
+                if (firstError) {
+                    firstError.focus();
+                    return false;
+                }
+                return true;
             },
             onCheckout(number) {
                 this.$router.push(`/cabinet/${number}`);
