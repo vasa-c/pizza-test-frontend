@@ -12,10 +12,12 @@ export const mutations = {
     setAsString(state, str) {
         const all = {};
         for (const item of str.split(";")) {
-            const [key, value] = item.split("=");
+            let [key, value] = item.split("=");
             if (typeof value === "undefined") {
                 continue;
             }
+            key = key.replace(/^\s+/, "").replace(/\s+$/, "");
+            value = decodeURIComponent(value);
             all[key] = value;
         }
         state.all = all;
@@ -31,5 +33,15 @@ export const actions = {
             str = window.document.cookie;
         }
         return commit("setAsString", str || "");
+    },
+
+    set({state}, {name, value}) {
+        const all = state.all;
+        if (typeof window === "undefined") {
+            return;
+        }
+        document.cookie = `${name}=${encodeURIComponent(value)};path=/;max-age=31000000`;
+        all[name] = value;
+        state.all = all; // @todo
     },
 };
