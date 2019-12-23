@@ -1,5 +1,7 @@
 import axios from "axios";
 
+export const strict = false; // fix for https://github.com/nuxt/nuxt.js/issues/1917
+
 export const state = () => ({
     cookieOnServer: null,
     csrf: null,
