@@ -37,5 +37,12 @@
     }
     main {
         float: left;
+        max-width: 1000px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    h2 {
+        font-size: 20px;
     }
 </style>
