@@ -1,7 +1,5 @@
 const env = require("./env.json");
 
-console.log(env);
-
 export default {
     mode: 'universal',
 
