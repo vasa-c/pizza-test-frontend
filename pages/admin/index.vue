@@ -8,7 +8,7 @@
             <h2>{{ group.title }} ({{ group.count }})</h2>
 
             <div v-for="order in group.orders" :key="order.number" style="padding-bottom: 10px;">
-                <nuxt-link to="`/admin/${order.number}`">#{{ order.number }}</nuxt-link>;
+                <nuxt-link :to="`/admin/${order.number}`">#{{ order.number }}</nuxt-link>;
                 {{ price(order.total_price, 1, order.currency) }}
             </div>
 

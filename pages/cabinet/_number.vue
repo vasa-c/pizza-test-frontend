@@ -33,7 +33,6 @@
         },
         computed: {
             user() {
-                console.log(this.order);
                 return this.$store.getters["user/user"];
             },
         },
