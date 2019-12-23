@@ -20,7 +20,7 @@
                     <img src="~/assets/icons/logout.svg" style="width:20px;cursor:pointer" alt="Logout" title="logout" @click="logout" />
 
                     <span v-if="user.is_admin" style="padding-left:15px">
-                        <nuxt-link to="/admn">
+                        <nuxt-link to="/admin">
                             <img src="~/assets/icons/tools.svg" style="width:20px;cursor:pointer" title="Admin area" alt="" />
                         </nuxt-link>
                     </span>
