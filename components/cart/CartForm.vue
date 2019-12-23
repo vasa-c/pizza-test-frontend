@@ -158,7 +158,6 @@
             },
         },
         mounted() {
-            console.log(this.user);
             if (this.user) {
                 this.$refs.name.value = this.user.name || "";
                 this.$refs.address.value = this.user.address || "";
