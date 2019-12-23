@@ -28,11 +28,8 @@
 
 <script>
     export default {
-        asyncData({store, route}) {
-            const
-                slug = route.params.slug,
-                action = "cabinet";
-            return store.dispatch("page", action);
+        asyncData({store}) {
+            return store.dispatch("page", "cabinet");
         },
         computed: {
             user() {
