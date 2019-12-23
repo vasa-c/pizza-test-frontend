@@ -7,8 +7,6 @@
             {{ pizza.description }}
         </div>
         <br style="clear:both" />
-
-
     </main>
 </template>
 
@@ -19,6 +17,11 @@
                 slug = route.params.slug,
                 action = `pizza/${slug}`;
             return store.dispatch("page", action);
+        },
+        mounted() {
+            if (this.pizza) {
+                this.$store.commit("pizza/current", this.pizza);
+            }
         },
     }
 </script>

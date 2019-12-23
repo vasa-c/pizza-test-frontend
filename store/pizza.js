@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const state = () => ({
     types: [],
+    current: null,
 });
 
 export const getters = {
@@ -10,6 +11,9 @@ export const getters = {
         return state.types;
     },
 
+    current(state) {
+        return state.current;
+    },
 };
 
 export const mutations = {
@@ -18,6 +22,9 @@ export const mutations = {
         state.types = types;
     },
 
+    current(state, current) {
+        state.current = current;
+    },
 };
 
 export const actions = {

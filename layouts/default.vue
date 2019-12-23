@@ -17,6 +17,7 @@
     import LeftMenu from "~/components/layout/LeftMenu";
 
     export default {
+        middleware: ["default"],
         components: {
             LayoutHeader,
             LayoutFooter,
