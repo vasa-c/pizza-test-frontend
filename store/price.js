@@ -29,7 +29,7 @@ export const mutations = {
 
     setCurrencies(state, currencies) {
         const curLabels = {};
-        state.currecies = currencies;
+        state.currencies = currencies;
         for (const cur of currencies) {
             curLabels[cur.key] = cur.label;
         }
@@ -65,7 +65,7 @@ export const actions = {
         return dispatch("cookie/set", {
             name: "cur",
             value: cur,
-        });
+        }, {root: true});
     },
 
 };

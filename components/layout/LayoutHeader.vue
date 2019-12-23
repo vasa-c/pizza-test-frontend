@@ -7,6 +7,7 @@
                 </div>
             </nuxt-link>
             <div id="user-block">
+                <currencies></currencies>
                 <nuxt-link to="/cart">
                     <img src="~/assets/icons/shopping.svg" alt="Shopping cart" class="cart-icon" />
                     <span class="cart-count" v-if="cartCount">{{ cartCount }}</span>
@@ -18,15 +19,17 @@
 </template>
 
 <script>
+    import Currencies from "./Currencies";
+
     export default {
-
+        components: {
+            Currencies,
+        },
         computed: {
-
             cartCount() {
                 return this.$store.getters["cart/count"];
             },
         },
-
     }
 </script>
 
