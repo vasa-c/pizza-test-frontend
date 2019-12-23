@@ -14,6 +14,14 @@ export const getters = {
     current(state) {
         return state.current;
     },
+
+    bySlug(state) {
+        const result = {};
+        for (const pizza of state.types) {
+            result[pizza.slug] = pizza;
+        }
+        return result;
+    },
 };
 
 export const mutations = {

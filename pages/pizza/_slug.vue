@@ -18,13 +18,13 @@
             <p>Already in Cart.
                 <nuxt-link to="/cart" style="text-decoration:none">Go to checkout &rarr;.</nuxt-link>
             </p>
-            <span @click="decrement" class="cart-dec" :class="{'mp-disabled': count <= 1}">-</span>
-            <span class="cart-item-count">{{ count }}</span>
-            <span @click="increment" class="cart-inc" :class="{'mp-disabled': count >= 10}">+</span>
-            <span @click="del" class="cart-delete">
+            <span @click="decrement" class="p-cart-dec" :class="{'mp-disabled': count <= 1}">-</span>
+            <span class="p-cart-item-count">{{ count }}</span>
+            <span @click="increment" class="p-cart-inc" :class="{'mp-disabled': count >= 10}">+</span>
+            <span @click="del" class="p-cart-delete">
                 <img src="~/assets/icons/delete.svg" alt="Delete from cart" title="Delete from cart" />
             </span>
-            <span class="cart-price">
+            <span class="p-cart-price">
                 &euro; {{ price }}
             </span>
         </div>
@@ -102,31 +102,32 @@
         padding: 10px 50px;
         font-size: 16px;
         border-radius: 3px;
+        cursor: pointer;
     }
 
-    .cart-dec {
+    .p-cart-dec {
         color: red;
         font-size: 36px;
         cursor: pointer;
     }
-    .cart-inc {
+    .p-cart-inc {
         color: green;
         font-size: 36px;
         cursor: pointer;
     }
-    .cart-item-count {
+    .p-cart-item-count {
         font-size: 36px;
         padding: 0 15px;
     }
 
-    .cart-delete {
+    .p-cart-delete {
         padding-left: 25px;
         cursor: pointer;
         img {
             width: 25px;
         }
     }
-    .cart-price {
+    .p-cart-price {
         padding-left: 50px;
         font-size: 36px;
     }
