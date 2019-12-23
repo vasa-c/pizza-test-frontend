@@ -1,7 +1,12 @@
 <template>
     <div>
         <layout-header></layout-header>
-        <nuxt />
+        <section id="center">
+            <div class="wrapper">
+                <left-menu></left-menu>
+                <nuxt />
+            </div>
+        </section>
         <layout-footer></layout-footer>
     </div>
 </template>
@@ -9,11 +14,13 @@
 <script>
     import LayoutHeader from "~/components/layout/LayoutHeader";
     import LayoutFooter from "~/components/layout/LayoutFooter";
+    import LeftMenu from "~/components/layout/LeftMenu";
 
     export default {
         components: {
             LayoutHeader,
             LayoutFooter,
+            LeftMenu,
         },
     }
 </script>
@@ -26,5 +33,8 @@
     .wrapper {
         max-width: 1280px;
         margin: auto;
+    }
+    main {
+        float: left;
     }
 </style>

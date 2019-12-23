@@ -1,7 +1,7 @@
 <template>
-  <div>
-      Mail page
-  </div>
+  <main>
+      <h1>Main page</h1>
+  </main>
 </template>
 
 <script>
