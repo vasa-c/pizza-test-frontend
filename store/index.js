@@ -49,7 +49,7 @@ export const actions = {
         if (data) {
             options.method = "post";
             options.data = {
-                csrf: state.csrf,
+                _token: state.csrf,
                 ...data,
             };
         } else {

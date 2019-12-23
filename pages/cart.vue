@@ -6,6 +6,7 @@
 
         <template v-if="!isEmpty">
             <cart-items></cart-items>
+            <cart-form></cart-form>
         </template>
 
     </main>
@@ -13,10 +14,12 @@
 
 <script>
     import CartItems from "~/components/cart/CartItems";
+    import CartForm from "~/components/cart/CartForm";
 
     export default {
         components: {
             CartItems,
+            CartForm,
         },
         computed: {
             isEmpty() {
