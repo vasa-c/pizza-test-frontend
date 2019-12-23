@@ -1,6 +1,7 @@
 export const state = () => ({
     user: null,
     loginPopup: false,
+    reqLoginEmail: null,
 });
 
 export const getters = {
@@ -18,6 +19,10 @@ export const getters = {
 
     loginPopup(state) {
         return state.loginPopup;
+    },
+
+    reqLoginEmail(state) {
+        return state.reqLoginEmail;
     },
 };
 
@@ -48,10 +53,17 @@ export const actions = {
 
     signin({state}) {
         state.loginPopup = true;
+        state.reqLoginEmail = null;
     },
 
     closeLoginPopup({state}) {
         state.loginPopup = false;
+        state.reqLoginEmail = null;
+    },
+
+    reqLogin({state}, email) {
+        state.loginPopup = true;
+        state.reqLoginEmail = email;
     },
 
 };

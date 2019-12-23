@@ -2,7 +2,8 @@
     <div id="login-popup">
         <div id="login-popup-fade" @click="close"></div>
         <div id="login-popup-form">
-            <h2>Sign In</h2>
+            <h2 v-if="!reqLoginEmail">Sign In</h2>
+            <h2 v-if="reqLoginEmail">E-mail already exist</h2>
             <div class="login-popup-close" @click="close">
                 <img src="~/assets/icons/close.svg" alt="" />
             </div>
@@ -31,6 +32,9 @@
         components: {
         },
         computed: {
+            reqLoginEmail() {
+                return this.$store.getters["user/reqLoginEmail"];
+            },
         },
         methods: {
             close() {
@@ -75,8 +79,13 @@
             },
         },
         mounted() {
-            this.$refs.email.focus();
             this.error = false;
+            if (this.reqLoginEmail) {
+                this.$refs.email.value = this.reqLoginEmail;
+                this.$refs.password.focus();
+            } else {
+                this.$refs.email.focus();
+            }
         },
     }
 </script>
@@ -98,7 +107,7 @@
     #login-popup-form {
         position: fixed;
         width: 750px;
-        height: 750px;
+        height: 300px;
         background-color: white;
         z-index: 3000;
         top: 50px;

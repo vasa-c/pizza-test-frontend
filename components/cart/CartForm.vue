@@ -18,6 +18,8 @@
 
             <button type="submit" class="buy-button" v-if="!wait">Buy</button>
             <p v-if="wait">Please, wait...</p>
+
+            <p v-if="error" style="color:red">Some, error...</p>
         </form>
     </div>
 </template>
@@ -37,6 +39,7 @@
                     outside: false,
                 },
                 wait: false,
+                error: false,
             };
         },
 
@@ -78,6 +81,7 @@
                 if (this.wait) {
                     return;
                 }
+                this.error = false;
                 if (!this.loadForm()) {
                     return;
                 }
@@ -95,8 +99,14 @@
                         this.onCheckout(data.order_number, data.user);
                         return;
                     }
+                    if (data.req_login) {
+                        this.$store.dispatch("user/reqLogin", this.order.email);
+                        return;
+                    }
+                    this.error = true;
                 }).catch((error) => {
                     this.wait = false;
+                    this.error = true;
                 });
             },
             loadForm() {
