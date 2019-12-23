@@ -32,11 +32,17 @@ export const mutations = {
 export const actions = {
 
     logout({commit, dispatch}) {
-        dispatch("api", {
+        return dispatch("api", {
             action: "logout",
             data: {},
         }, {root: true}).then((response) => {
             commit("user", null);
+            return dispatch("page", "layout", {root: true}).then((response) => {
+                if (typeof window !== "undefined") {
+                    // Flush privileges and csrf token
+                    window.location.assign("/");
+                }
+            });
         });
     },
 
