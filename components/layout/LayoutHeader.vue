@@ -7,7 +7,10 @@
                 </div>
             </nuxt-link>
             <div id="user-block">
-                <img src="~/assets/icons/shopping.svg" alt="Shopping cart" class="cart-icon" />
+                <nuxt-link to="/cart">
+                    <img src="~/assets/icons/shopping.svg" alt="Shopping cart" class="cart-icon" />
+                    <span class="cart-count" v-if="cartCount">{{ cartCount }}</span>
+                </nuxt-link>
             </div>
             <br style="clear:both" />
         </div>
@@ -16,6 +19,14 @@
 
 <script>
     export default {
+
+        computed: {
+
+            cartCount() {
+                return this.$store.getters["cart/count"];
+            },
+        },
+
     }
 </script>
 
@@ -40,5 +51,16 @@
         .cart-icon {
             width: 20px;
         }
+    }
+    .cart-count {
+        color: white;
+        font-size: 12px;
+        display: inline-block;
+        background-color: #ee2459;
+        border-radius: 10px;
+        width: 15px;
+        height: 15px;
+        margin-left: -10px;
+        text-align: center;
     }
 </style>
