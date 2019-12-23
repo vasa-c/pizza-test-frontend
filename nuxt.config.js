@@ -1,3 +1,7 @@
+const env = require("./env.json");
+
+console.log(env);
+
 export default {
     mode: 'universal',
 
@@ -24,5 +28,11 @@ export default {
     build: {
         extend (config, ctx) {
         }
-    }
+    },
+    server: {
+        port: env.port || 3000,
+    },
+    env: {
+        baseUrl: env.url ? env.url.replace(/\/+$/, "") : "http://localhost:3000",
+    },
 }
