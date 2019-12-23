@@ -4,7 +4,7 @@
             <div class="pizza-item">
                 <div class="pizza-name">{{ pizza.name }}</div>
                 <div class="pizza-photo"><img :src="pizza.photo" :alt="pizza.name"></div>
-                <div class="pizza-price">&euro;&nbsp;{{ pizza.prices.eur }}</div>
+                <div class="pizza-price">{{ price(pizza.prices) }}</div>
             </div>
         </nuxt-link>
     </div>

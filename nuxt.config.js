@@ -18,6 +18,7 @@ export default {
     css: [
     ],
     plugins: [
+        '~/plugins/price.js',
     ],
     buildModules: [
     ],

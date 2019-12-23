@@ -11,7 +11,7 @@
         <h2>Buy It</h2>
 
         <button @click="addToCart" v-if="!inCart" class="add-to-cart">
-            Add to the cart ({{ pizza.prices.eur }})
+            Add to the cart ({{ price(pizza.prices)}})
         </button>
 
         <div v-if="inCart" style="user-select:none">
@@ -25,7 +25,7 @@
                 <img src="~/assets/icons/delete.svg" alt="Delete from cart" title="Delete from cart" />
             </span>
             <span class="p-cart-price">
-                &euro; {{ price }}
+                {{ price(totalPrice) }}
             </span>
         </div>
 
@@ -52,8 +52,8 @@
             inCart() {
                 return (this.count > 0);
             },
-            price() {
-                return this.pizza.prices.eur * this.count;
+            totalPrice() {
+                return this.pizza.prices[this.currentCurrency()] * this.count;
             },
         },
         methods: {

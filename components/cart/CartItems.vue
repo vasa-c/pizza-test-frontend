@@ -18,7 +18,7 @@
                 <img src="~/assets/icons/delete.svg" alt="" title="Remove from the cart" @click="del(item)" />
             </div>
             <div class="cart-item-price">
-                {{ item.pizza.prices.eur }}
+                {{ price(item.pizza.prices, item.count) }}
             </div>
         </div>
     </div>
