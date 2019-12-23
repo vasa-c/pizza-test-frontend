@@ -4,7 +4,8 @@
 
         <div class="pizza-description">
             <img :src="pizza.photo" :alt="pizza.name" />
-            {{ pizza.description }}
+            <p>{{ pizza.description }}</p>
+            <p style="font-size:36px;">{{ price(pizza.prices) }}</p>
         </div>
         <br style="clear:both" />
 

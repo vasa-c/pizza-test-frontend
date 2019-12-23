@@ -37,6 +37,7 @@
     .currency-select {
         display: inline-block;
         padding-right: 50px;
+        font-size: 20px;
         span {
             color: #999999;
             padding-left: 10px;

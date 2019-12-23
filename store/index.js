@@ -11,6 +11,11 @@ export const getters = {
 };
 
 export const mutations = {
+
+    csrf(state, csrf) {
+        state.csrf = csrf;
+    },
+
 };
 
 export const actions = {
@@ -20,8 +25,9 @@ export const actions = {
             state.cookieOnServer = context.req.headers.cookie || null;
         }
         return dispatch("page", "layout").then((data) => {
-            state.csrf = data.csrf;
+            commit("csrf", data.csrf);
             commit("pizza/types", data.pizza_types);
+            commit("user/user", data.user);
             dispatch("price/init", {
                 currencies: data.currencies,
             });

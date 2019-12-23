@@ -4,9 +4,9 @@ Vue.prototype.currentCurrency = function () {
     return this.$store.getters["price/currentCurrency"];
 };
 
-Vue.prototype.price = function (price, count) {
+Vue.prototype.price = function (price, count, cur) {
     const
-        currency = this.$store.getters["price/currentCurrency"],
+        currency = cur || this.$store.getters["price/currentCurrency"],
         label = this.$store.getters["price/curLabels"][currency];
     if (price && (typeof price === "object")) {
         price = parseInt(price[currency]);

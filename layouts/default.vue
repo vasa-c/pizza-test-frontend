@@ -8,6 +8,7 @@
             </section>
         </div>
         <layout-footer></layout-footer>
+        <login-popup v-if="isLoginPopupOpened"></login-popup>
     </div>
 </template>
 
@@ -15,6 +16,7 @@
     import LayoutHeader from "~/components/layout/LayoutHeader";
     import LayoutFooter from "~/components/layout/LayoutFooter";
     import LeftMenu from "~/components/layout/LeftMenu";
+    import LoginPopup from "~/components/layout/LoginPopup";
 
     export default {
         middleware: ["cookie", "default"],
@@ -22,6 +24,12 @@
             LayoutHeader,
             LayoutFooter,
             LeftMenu,
+            LoginPopup,
+        },
+        computed: {
+            isLoginPopupOpened() {
+                return this.$store.getters["user/loginPopup"] && (!this.$store.getters["user/user"]);
+            },
         },
     }
 </script>

@@ -79,6 +79,7 @@
         margin-bottom: 15px;
         height: 55px;
         width: 600px;
+        border-radius: 5px;
     }
     .cart-item-photo {
         display: inline-block;
