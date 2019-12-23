@@ -22,6 +22,7 @@
 
 <style lang="scss">
     .pizza-list {
+        margin-left: -50px;
         .pizza-item {
             width: 200px;
             height: 200px;
