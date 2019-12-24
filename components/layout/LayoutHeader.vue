@@ -128,6 +128,9 @@
         }
     }
     .mobile-menu-icon {
+        @media screen and (min-width: 768px) {
+            display: none;
+        }
         padding-left: 50px;
         img {
             width: 25px;
