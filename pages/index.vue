@@ -10,6 +10,8 @@
 
       <p>Names of pizza types, descriptions and photos taken from <a href="https://www.webstaurantstore.com/article/101/types-of-pizza.html">this site</a>.</p>
 
+      <p>In theory, this site should work correctly in all actual browsers. But tested only in Google Chrome.</p>
+
       <h2>Choose your pizza</h2>
 
       <pizza-types></pizza-types>
