@@ -53,20 +53,40 @@
     .wrapper {
         @media screen and (min-width: 768px) {
             max-width: 1280px;
+            padding: 0 25px;
+            margin: auto;
         }
-        margin: auto;
-        padding: 0 25px;
+        @media screen and (max-width: 767px) {
+            margin: 0;
+            padding: 0 15px;
+        }
+
     }
     #center {
-        @media screen and (min-width: 768px) {
+        @media screen and (min-width: 1280px)  {
             width: 1280px;
+        }
+        @media screen and (min-width: 768px) and (max-width: 1279px)  {
+            min-width: 1280px;
         }
     }
     main {
-        float: left;
-        max-width: 950px;
-        padding-left: 50px;
-        margin-bottom: 50px;
+        @media screen and (min-width: 1280px)  {
+            width: 950px;
+            float: left;
+            padding-left: 50px;
+            margin-bottom: 50px;
+        }
+        @media screen and (min-width: 768px) and (max-width: 1279px) {
+            width: 768px;
+            float: left;
+            padding-left: 50px;
+            margin-bottom: 50px;
+        }
+        @media screen and (max-width: 767px) {
+            margin: 0;
+            padding: 10px;
+        }
     }
     h1 {
         font-size: 24px;

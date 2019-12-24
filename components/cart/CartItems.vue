@@ -78,8 +78,13 @@
         padding: 5px;
         margin-bottom: 15px;
         height: 55px;
-        width: 600px;
         border-radius: 5px;
+        @media screen and (min-width: 768px) {
+            width: 600px;
+        }
+        @media screen and (max-width: 767px) {
+            width: 100%;
+        }
     }
     .cart-item-photo {
         display: inline-block;
@@ -96,6 +101,9 @@
         height: 55px;
         line-height: 55px;
         vertical-align: top;
+        @media screen and (max-width: 767px) {
+            display: none;
+        }
     }
     .cart-item-count {
         display: inline-block;
@@ -138,10 +146,15 @@
     }
     .cart-item-price {
         display: inline-block;
-        width: 100px;
         height: 55px;
         line-height: 55px;
         vertical-align: top;
         text-align: right;
+        @media screen and (min-width: 768px) {
+            width: 100px;
+        }
+        @media screen and (max-width: 767px) {
+
+        }
     }
 </style>

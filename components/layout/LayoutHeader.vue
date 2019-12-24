@@ -95,11 +95,22 @@
         text-align: center;
     }
     .user-block-cart {
-        padding-right: 50px;
+        @media screen and (max-width: 767px) {
+            padding-right: 20px;
+        }
+        @media screen and (min-width: 768px) {
+            padding-right: 50px;
+        }
     }
     .user-block-name {
         display:inline-block;
-        max-width:150px;
+        white-space: nowrap;
+        @media screen and (max-width: 767px) {
+            max-width:50px;
+        }
+        @media screen and (min-width: 768px) {
+            max-width:150px;
+        }
         overflow:hidden;
         a {
             color: white;
