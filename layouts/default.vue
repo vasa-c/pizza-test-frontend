@@ -51,12 +51,16 @@
         color: #343a40;
     }
     .wrapper {
-        max-width: 1280px;
+        @media screen and (min-width: 768px) {
+            max-width: 1280px;
+        }
         margin: auto;
         padding: 0 25px;
     }
     #center {
-        width: 1280px;
+        @media screen and (min-width: 768px) {
+            width: 1280px;
+        }
     }
     main {
         float: left;
