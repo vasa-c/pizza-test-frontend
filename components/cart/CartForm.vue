@@ -171,7 +171,12 @@
     .cart-form-field {
         margin: 15px 0;
         input[type=text] {
-            width: 500px;
+            @media screen and (min-width: 768px) {
+                width: 500px;
+            }
+            @media screen and (max-width: 768px) {
+                width: 95%;
+            }
             height: 25px;
             font-size: 16px;
             border: 1px solid black;
@@ -189,9 +194,16 @@
     .buy-button {
         background-color: #28a745;
         border: 1px solid #28a745;
+        border-radius: 3px;
         color: white;
         font-size: 16px;
-        padding: 10px 50px;
         cursor: pointer;
+        @media screen and (min-width: 768px) {
+            padding: 10px 50px;
+        }
+        @media screen and (max-width: 768px) {
+            padding: 10px 0;
+            width: 100%;
+        }
     }
 </style>

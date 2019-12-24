@@ -22,12 +22,25 @@
 
 <style lang="scss">
     .pizza-list {
-        margin-left: -50px;
+        @media screen and (max-width: 767px) {
+            text-align: center;
+        }
+        @media screen and (min-width: 768px) {
+            margin-left: -50px;
+        }
+        a {
+            text-decoration: none;
+        }
         .pizza-item {
-            width: 200px;
-            height: 200px;
-            display: inline-block;
-            padding-left: 50px;
+            @media screen and (min-width: 768px) {
+                display: inline-block;
+                width: 200px;
+                height: 200px;
+                padding-left: 50px;
+            }
+            @media screen and (max-width: 767px) {
+                margin-bottom: 20px;
+            }
             cursor: pointer;
             .pizza-photo img {
                 width: 150px;

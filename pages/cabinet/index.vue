@@ -51,8 +51,13 @@
     padding: 5px;
     margin-bottom: 15px;
     height: 50px;
-    width: 600px;
     border-radius: 5px;
+    @media screen and (min-width: 768px) {
+        width: 600px;
+    }
+    @media screen and (max-width: 767px) {
+        width: 100%;
+    }
 }
 .cabinet-order-number {
     display: inline-block;
@@ -64,13 +69,22 @@
     }
 }
 .cabinet-order-price {
-    display: inline-block;
-    width: 150px;
-    padding-top: 10px;
+    @media screen and (min-width: 768px) {
+        display: inline-block;
+        padding-top: 10px;
+        width: 150px;
+    }
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
 }
 .cabinet-order-status {
     display: inline-block;
-    width: 250px;
+    @media screen and (min-width: 768px) {
+        width: 250px;
+    }
+    @media screen and (max-width: 767px) {
+    }
     padding-top: 10px;
     text-align: right;
     span {

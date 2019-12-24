@@ -95,7 +95,12 @@
 
 <style lang="scss">
     .pizza-description img {
-        float: left;
+        @media screen and (min-width: 768px) {
+            float: left;
+        }
+        @media screen and (max-width: 767px) {
+            display: block;
+        }
         max-width: 200px;
         margin-right: 50px;
     }
@@ -104,10 +109,16 @@
         background-color: #28a745;
         border: 1px solid  #28a745;
         color: white;
-        padding: 10px 50px;
         font-size: 16px;
         border-radius: 3px;
         cursor: pointer;
+        @media screen and (min-width: 768px) {
+            padding: 10px 50px;
+        }
+        @media screen and (max-width: 767px) {
+            padding: 10px 0;
+            width: 95%;
+        }
     }
 
     .p-cart-dec {
@@ -126,15 +137,25 @@
     }
 
     .p-cart-delete {
-        padding-left: 25px;
+        @media screen and (min-width: 768px) {
+            padding-left: 25px;
+        }
+        @media screen and (max-width: 767px) {
+            padding-left: 10px;
+        }
         cursor: pointer;
         img {
             width: 25px;
         }
     }
     .p-cart-price {
-        padding-left: 50px;
         font-size: 36px;
+        @media screen and (min-width: 768px) {
+            padding-left: 50px;
+        }
+        @media screen and (max-width: 767px) {
+            padding-left: 10px;
+        }
     }
 
     .mp-disabled {
