@@ -94,4 +94,9 @@
     h2 {
         font-size: 20px;
     }
+    .mobile-hidden {
+        @media screen and (max-width: 767px) {
+            display: none !important;
+        }
+    }
 </style>

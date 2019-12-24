@@ -6,11 +6,15 @@ export const state = () => ({
     cookieOnServer: null,
     csrf: null,
     pageTitle: null,
+    isMobileMenuOpened: false,
 });
 
 export const getters = {
     pageTitle(state) {
         return state.pageTitle;
+    },
+    isMobileMenuOpened(state) {
+        return state.isMobileMenuOpened;
     },
 };
 
@@ -22,6 +26,18 @@ export const mutations = {
 
     pageTitle(state, title) {
         state.pageTitle = title;
+    },
+
+    openMobileMenu(state) {
+        state.isMobileMenuOpened = true;
+    },
+
+    closeMobileMenu(state) {
+        state.isMobileMenuOpened = false;
+    },
+
+    toggleMobileMenu(state) {
+        state.isMobileMenuOpened = !state.isMobileMenuOpened;
     },
 };
 
