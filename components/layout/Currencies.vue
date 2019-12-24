@@ -36,7 +36,12 @@
 <style lang="scss">
     .currency-select {
         display: inline-block;
-        padding-right: 50px;
+        @media screen and (max-width: 767px) {
+            padding-right: 20px;
+        }
+        @media screen and (min-width: 768px) {
+            padding-right: 50px;
+        }
         font-size: 20px;
         span {
             color: #999999;
