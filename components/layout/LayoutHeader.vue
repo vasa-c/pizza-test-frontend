@@ -16,10 +16,10 @@
                 </span>
 
                 <template v-if="user">
-                    <span class="user-block-name" style="padding-right:15px"><nuxt-link to="/cabinet">{{ user.name }}</nuxt-link></span>
-                    <img src="~/assets/icons/logout.svg" style="width:20px;cursor:pointer" alt="Logout" title="logout" @click="logout" />
+                    <span class="user-block-name mobile-hidden" style="padding-right:15px"><nuxt-link to="/cabinet">{{ user.name }}</nuxt-link></span>
+                    <img src="~/assets/icons/logout.svg" style="width:20px;cursor:pointer" alt="Logout" title="logout" @click="logout" class="mobile-hidden" />
 
-                    <span v-if="user.is_admin" style="padding-left:15px">
+                    <span v-if="user.is_admin" style="padding-left:15px" class="mobile-hidden">
                         <nuxt-link to="/admin">
                             <img src="~/assets/icons/tools.svg" style="width:20px;cursor:pointer" title="Admin area" alt="" />
                         </nuxt-link>
@@ -27,20 +27,28 @@
                 </template>
 
                 <template v-if="!user">
-                    <img src="~/assets/icons/login.svg" style="width:20px;cursor:pointer" alt="Login" titlie="Login" @click="signin" />
+                    <img src="~/assets/icons/login.svg" style="width:20px;cursor:pointer" alt="Login" titlie="Login" @click="signin" class="mobile-hidden" />
                 </template>
+
+                <span class="mobile-menu-icon">
+                    <img src="~/assets/icons/menu.svg" alt="" @click="toggleMobileMenu" />
+                </span>
+
             </div>
             <br style="clear:both" />
         </div>
+        <mobile-menu></mobile-menu>
     </header>
 </template>
 
 <script>
     import Currencies from "./Currencies";
+    import MobileMenu from "./MobileMenu";
 
     export default {
         components: {
             Currencies,
+            MobileMenu,
         },
         computed: {
             cartCount() {
@@ -56,6 +64,9 @@
             },
             signin() {
                 this.$store.dispatch("user/signin");
+            },
+            toggleMobileMenu() {
+                this.$store.commit("toggleMobileMenu");
             },
         },
     }
@@ -106,7 +117,7 @@
         display:inline-block;
         white-space: nowrap;
         @media screen and (max-width: 767px) {
-            max-width:50px;
+            display: none;
         }
         @media screen and (min-width: 768px) {
             max-width:150px;
@@ -114,6 +125,12 @@
         overflow:hidden;
         a {
             color: white;
+        }
+    }
+    .mobile-menu-icon {
+        padding-left: 50px;
+        img {
+            width: 25px;
         }
     }
 </style>

@@ -3,4 +3,6 @@ export default function ({store}) {
     store.dispatch("cart/init");
     store.dispatch("price/loadCurrentCurrency");
     store.commit("pageTitle", "");
+    // store.commit("closeMobileMenu");
+    store.commit("closeMobileMenu");
 }

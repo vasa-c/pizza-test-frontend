@@ -106,13 +106,19 @@
     }
     #login-popup-form {
         position: fixed;
-        width: 750px;
+        @media screen and (max-width: 767px) {
+            left: 5%;
+            width: 90%;
+        }
+        @media screen and (min-width: 768px) {
+            width: 750px;
+            left: 50%;
+            margin-left: -375px;
+        }
         height: 300px;
         background-color: white;
         z-index: 3000;
         top: 50px;
-        left: 50%;
-        margin-left: -375px;
         border-radius: 10px;
         button {
             background-color: #28a745;
@@ -127,11 +133,16 @@
     .login-popup-form-field {
         margin: 20px 0;
         input {
-            width: 500px;
             font-size: 24px;
             border: 1px solid black;
             border-radius: 5px;
             padding: 5px;
+            @media screen and (max-width: 767px) {
+                width: 85%;
+            }
+            @media screen and (min-width: 768px) {
+                width: 500px;
+            }
         }
     }
     .login-popup-close {
